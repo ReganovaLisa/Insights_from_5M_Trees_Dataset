@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Main Page</title>
-<link rel="stylesheet" type="text/css" href="index.css">
-
+    <title>Main Page</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-array.v2.min.js"></script>
 </head>
-<header>
-   
-    <h1>
-        A story that Trees tell us
-    </h1>
-  
-</header>
-
-
 <body>
+    <header>
+        <h1>A story that Trees tell us</h1>
+    </header>
 
-<h2>"Croissant &#38 Macchiato" </h2>
+    <h2>"Croissant & Macchiato" </h2>
+    <h3>Aliaksandr Shcharbitski and Elizaveta Reganova</h3>
 
-<h3> Aliaksandr Shcharbitski and Elizaveta Reganova</h3>
-<br>
-<p>This project aimes to display a few data visualizations on Kaggle <a href="https://www.kaggle.com/datasets/mexwell/5m-trees-dataset/data">5M Trees Dataset</a>. </p>
-<br>
-<h2>Content:</h2>
-<ul>
-    <li>Here will be the 1st section</li>
-    <li>the 2nd</li>
-    <li>the 3rd and etc.</li>
-  </ul>  
-  
+    <p>This project aims to display a few data visualizations on Kaggle <a href="https://www.kaggle.com/datasets/mexwell/5m-trees-dataset/data">5M Trees Dataset</a>.</p>
+
+    <h2>Content:</h2>
+    <ul>
+        <li>The 1st section</li>
+        <div class="plot_container">
+            <select id="fileSelect">
+                <!-- <option value="../data_raw/OverlandPark_Final_2022-06-18.csv">OverlandPark</option>
+                <option value="../data_raw/Anaheim_Final_2022-06-18.csv">Anaheim</option>
+                <option value="../data_raw/Worcester_Final_2022-06-18.csv">Worcester</option>
+                <option value="../data_raw/Tampa_Final_2022-06-18.csv">Tampa</option> -->
+                <option value="../data_raw/Albuquerque_Final_2022-06-18.csv">Albuquerque</option>
+                <option value="../data_raw/Sacramento_Final_2022-06-18.csv">Sacramento</option>
+                <option value="../data_raw/Stockton_Final_2022-06-18.csv">Stockton</option>
+                <option value="../data_raw/SantaRosa_Final_2022-06-18.csv">SantaRosa</option>
+            </select>
+            <div id="barContainer"></div>
+            <script src="barplot_easy.js"></script>
+        </div>
+        <li>the 2nd</li>
+        <li>the 3rd and etc.</li>
+    </ul>
 </body>
 </html>
