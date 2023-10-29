@@ -5,6 +5,9 @@ const width = 720;
 const height = 480;
 const margin = { t: 10, b: 30, l: 120, r: 10 };
 
+var sort_order = "tree_count"
+var selectedFile = "../data_raw/Albuquerque_Final_2022-06-18.csv"
+
 const svg = d3.select('div#barContainer')
   .append('svg')
   .attr('width', width)
@@ -24,12 +27,23 @@ const yAxis = svg.append('g')
   .attr('transform', `translate(${margin.l},${margin.t})`);
 
 document.getElementById("fileSelect").addEventListener("change", function (e) {
-  const selectedFile = e.target.value;
+  selectedFile = e.target.value;
   if (selectedFile) {
     console.log(selectedFile);
     updateData(selectedFile);
   }
 });
+
+document.querySelectorAll('input[type="radio"][name="sortorder"]').forEach((radioButton) => {
+    radioButton.addEventListener('change', (event) => {
+      if (event.target.checked) {
+        console.log(`Selected: ${event.target.value}`);
+        sort_order = event.target.value;
+        updateData(selectedFile)
+      }
+    });
+  });
+
 
 function updateData(csvData) {
   d3.csv(csvData).then(function (data) {
@@ -46,7 +60,13 @@ function updateData(csvData) {
           "rank": index,
           "height": heights.length > 0 ? Math.round(d3.sum(heights) / heights.length * 10) / 10 : "no data",
         };
-        return properties;
+        return properties;})
+      .sort((a, b) => {
+        if (sort_order == "tree_count") {
+            return b.value - a.value;
+        } else if (sort_order == "tree_name") {
+            return a.key.localeCompare(b.key);
+        }
       });
 
     console.log(dataset);
@@ -145,4 +165,4 @@ function updateData(csvData) {
   });
 }
 
-updateData("../data_raw/Albuquerque_Final_2022-06-18.csv");
+updateData(selectedFile);
