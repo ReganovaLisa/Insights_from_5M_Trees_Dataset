@@ -1,10 +1,10 @@
-/* Reset margin and padding for common elements */
+
 body, h1, h2, h3, p {
   margin: 0;
   padding: 0;
 }
 
-/* Header styles */
+
 header {
   font-size: 72px;
   color: #ffffff;
@@ -20,13 +20,11 @@ header h1 {
   font-family: 'Roboto Slab', serif;
 }
 
-/* Body styles */
 body {
   background-color: #ffffff;
   font-family: 'Fira Sans', sans-serif;
 }
 
-/* Headings and text styles */
 h1 {
   font-size: 36px;
   font-family: 'Roboto Slab', serif;
@@ -56,15 +54,13 @@ ul li {
   font-size: 20px;
 }
 
-/* Container styles */
 .plot_container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Optional: Make the container take the full height of the viewport */
+  height: 100vh; 
 }
 
-/* SVG and chart styles */
 svg {
   border: solid 1px #222;
 }
@@ -87,6 +83,10 @@ svg > g.chart > rect.bar.obs {
 svg > g.chart > rect.bar.highlight {
   fill: gold;
   stroke-width: 4px;
+}
+
+svg > g.chart > rect.bar.unhighlight {
+  fill: gray;
 }
 
 .tooltip {

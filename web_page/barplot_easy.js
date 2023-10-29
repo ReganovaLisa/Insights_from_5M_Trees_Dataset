@@ -87,6 +87,8 @@ function updateData(csvData) {
       .classed('bar new', true)
       .attr('x', xScale(0))
       .on('mouseover', function (e, d) {
+        d3.selectAll('rect.bar').classed('unhighlight', true);
+        d3.select(this).classed('unhighlight', false);
         d3.select(this).classed('highlight', true);
         tooltip.text(`${dataset[d].key} trees: ${dataset[d].value};\n\tavg height: ${dataset[d].height}`);
         return tooltip.style("z-index", "10")
@@ -98,6 +100,7 @@ function updateData(csvData) {
           .style("left", (d3.event.pageX + 10) + "px");
       })
       .on('mouseout', function (e, d) {
+        d3.selectAll('rect.bar').classed('unhighlight', false);
         d3.select(this).classed('highlight', false);
         return tooltip.transition().duration(d_short)
           .style("opacity", 0)
@@ -106,17 +109,25 @@ function updateData(csvData) {
 
       
     bars.classed('new', false)
-      .on('mouseover', function (e, d) {
+    .on('mouseover', function (e, d) {
+        d3.selectAll('rect.bar').classed('unhighlight', true);
+        d3.select(this).classed('unhighlight', false);
         d3.select(this).classed('highlight', true);
-        tooltip.text(`trees: ${dataset[d].value}\n\tavg height: ${dataset[d].height}`);
-        return tooltip.transition().duration(d_short).style("opacity", 1);
+        tooltip.text(`${dataset[d].key} trees: ${dataset[d].value};\n\tavg height: ${dataset[d].height}`);
+        return tooltip.style("z-index", "10")
+          .transition().duration(d_short)
+          .style("opacity", 1);
       })
       .on("mousemove", function () {
-        return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+        return tooltip.style("top", (d3.event.pageY - 10) + "px")
+          .style("left", (d3.event.pageX + 10) + "px");
       })
       .on('mouseout', function (e, d) {
+        d3.selectAll('rect.bar').classed('unhighlight', false);
         d3.select(this).classed('highlight', false);
-        return tooltip.transition().duration(d_short).style("opacity", 0);
+        return tooltip.transition().duration(d_short)
+          .style("opacity", 0)
+          .style("z-index", "-10");
       });
 
       
