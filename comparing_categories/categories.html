@@ -11,18 +11,11 @@
         <h1>Who counted the most trees?</h1>
     </header>
 
-    <ul>
-        <h3>Tree species abundance</h3>
-        <h4>Order species by:</h4>
-        <form>
-            <label>
-              <input type="radio" name="sortorder" value="tree_count" id="sortorder_tree_count" checked> Number of trees
-            </label>
-            <label>
-              <input type="radio" name="sortorder" value="tree_name" id="sortorder_tree_name"> Tree name
-            </label>
-        </form>
-        <h4 style="display: inline;">City to show data from:</h4>
+    
+        <h2>Tree species abundance</h2>
+        <p>  To gain insights into tree abundance across various cities in the United States, we can start by examining bar chart distributions of the twenty most frequently occurring tree species in each city.</p>
+
+        <p style="display: inline;">City to show data from:</p>
         <select id="fileSelect" style="display: inline;">
             <!-- <option value="../data_raw/OverlandPark_Final_2022-06-18.csv">OverlandPark</option>
             <option value="../data_raw/Anaheim_Final_2022-06-18.csv">Anaheim</option>
@@ -33,12 +26,23 @@
             <option value="../data_raw/Stockton_Final_2022-06-18.csv">Stockton</option>
             <option value="../data_raw/SantaRosa_Final_2022-06-18.csv">SantaRosa</option>
         </select>
+
+        <p>Order species by:
+            <form>
+                <label>
+                  <input type="radio" name="sortorder" value="tree_count" id="sortorder_tree_count" checked> Number of trees
+                </label>
+                <label>
+                  <input type="radio" name="sortorder" value="tree_name" id="sortorder_tree_name"> Tree name
+                </label>
+            </form>
+            </p>
+
         <div class="plot_container">
             <div id="barContainer"></div>
             <script src="barplot_easy.js"></script>
         </div>
-        <li>the 2nd</li>
-        <li>the 3rd and etc.</li>
-    </ul>
+        
+    
 </body>
 </html>
