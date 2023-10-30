@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comparing categories Page</title>
+    <link rel="stylesheet" type="text/css" href="../web_page/index.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-array.v2.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Who counted the most trees?</h1>
+    </header>
+
+    <ul>
+        <h3>Tree species abundance</h3>
+        <h4>Order species by:</h4>
+        <form>
+            <label>
+              <input type="radio" name="sortorder" value="tree_count" id="sortorder_tree_count" checked> Number of trees
+            </label>
+            <label>
+              <input type="radio" name="sortorder" value="tree_name" id="sortorder_tree_name"> Tree name
+            </label>
+        </form>
+        <h4 style="display: inline;">City to show data from:</h4>
+        <select id="fileSelect" style="display: inline;">
+            <!-- <option value="../data_raw/OverlandPark_Final_2022-06-18.csv">OverlandPark</option>
+            <option value="../data_raw/Anaheim_Final_2022-06-18.csv">Anaheim</option>
+            <option value="../data_raw/Worcester_Final_2022-06-18.csv">Worcester</option>
+            <option value="../data_raw/Tampa_Final_2022-06-18.csv">Tampa</option> -->
+            <option value="../data_raw/Albuquerque_Final_2022-06-18.csv">Albuquerque</option>
+            <option value="../data_raw/Sacramento_Final_2022-06-18.csv">Sacramento</option>
+            <option value="../data_raw/Stockton_Final_2022-06-18.csv">Stockton</option>
+            <option value="../data_raw/SantaRosa_Final_2022-06-18.csv">SantaRosa</option>
+        </select>
+        <div class="plot_container">
+            <div id="barContainer"></div>
+            <script src="barplot_easy.js"></script>
+        </div>
+        <li>the 2nd</li>
+        <li>the 3rd and etc.</li>
+    </ul>
+</body>
+</html>

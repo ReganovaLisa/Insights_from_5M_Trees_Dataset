@@ -1,7 +1,7 @@
 const size = 20;
 const key = "common_name";
 
-const width = 720;
+const width = window.screen.width * 0.8;
 const height = 480;
 const margin = { t: 10, b: 30, l: 120, r: 10 };
 
