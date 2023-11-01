@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../web_page/index.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://d3js.org/d3-array.v2.min.js"></script>
+    
 </head>
 <body>
     <header>
@@ -38,11 +39,35 @@
             </form>
             </p>
 
-        <div class="plot_container">
-            <div id="barContainer"></div>
-            <script src="barplot_easy.js"></script>
-        </div>
+            <div class="plot_container">
+                <div id="barContainer"></div>
+                <script src="barplot_easy.js"></script>
+            </div> 
+
+        <h2>Comparison of biotopes in California cities</h2>
+        <p>For consistency, we selected cities with a comparable number of records, typically ranging from 60,000 to 80,000 trees. Subsequently, we identified the five most prevalent tree species among the selected cities. This process involved normalizing the species distribution based on the total number of trees within each city. After that, we added up the corresponding values for all cities and selected the arguments of the five largest. </p>
         
+        <div class="plot_container_narrow">
+            <div id="my_dataviz"></div>
+            <script src="stacked_barplot.js"></script>
+        </div> 
+
+        <p>Same as above, but in percent scale:</p>
+        <div class="plot_container_narrow">
+            <div id="my_dataviz_percent"></div>
+            <script src="stacked_grouped_percent.js"></script>
+        </div> 
+<p>Now let's make grouping by 1 - city:</p>
+        <div class="plot_container_narrow">
+            <div id="my_dataviz_group"></div>
+            <script src="stacked_grouped_barchart.js"></script>
+        </div> 
+        <p>2 - species:</p>
+        <div class="plot_container_narrow">
+            <div id="my_dataviz_small"></div>
+            <script src="small_multiple.js"></script>
+        </div> 
+        <p>As we can see, the distribution of species exhibits significant variation even among geographically close cities situated within the same state!</p>
     
 </body>
 </html>

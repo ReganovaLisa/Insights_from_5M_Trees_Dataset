@@ -23,6 +23,7 @@ header h1 {
 body {
   background-color: #ffffff;
   font-family: 'Fira Sans', sans-serif;
+  margin-bottom: 50px;
 }
 
 h1 {
@@ -67,6 +68,13 @@ form{
   height: 90vh; 
 }
 
+.plot_container_narrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; 
+}
+
 svg {
   border: solid 1px #222;
 }
@@ -96,6 +104,8 @@ svg > g.chart > rect.bar.unhighlight {
 }
 
 .tooltip {
+  font-family: 'Fira Sans', serif;
+  font: 16px serif;
   position: absolute;
   z-index: 10;
   opacity: 0;
