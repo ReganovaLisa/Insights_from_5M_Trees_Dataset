@@ -1,7 +1,7 @@
 function run_heatmap(div_name) {
     var margin = {top: 20, right: 20, bottom: 30, left: 100},
     width = window.screen.width * 0.4 - margin.left - margin.right,
-    height = window.screen.width * 0.4 - margin.top - margin.bottom;
+    height = width;
     const d_short = 50;
 
     var svg = d3.select(`#${div_name}`)

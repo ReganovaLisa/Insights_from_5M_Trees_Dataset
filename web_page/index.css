@@ -77,6 +77,12 @@ form{
 
 svg {
   border: solid 1px #222;
+  font-family: 'Fira Sans', serif;
+}
+
+svg > g.axis {
+  font-family: 'Fira Sans', serif;
+  font: 12px serif;
 }
 
 svg > g.chart > rect.bar {
