@@ -1,0 +1,201 @@
+source,target,value
+Texas,Arlington,4874
+Florida,CapeCoral,20193
+Florida,Orlando,51363
+Florida,Tampa,14500
+Texas,Plano,8381
+California,Anaheim,21953
+California,GardenGrove,8461
+California,HuntingtonBeach,17747
+California,Irvine,11252
+California,Oakland,13407
+California,Ontario,22364
+Arlington,Lagerstroemia indica,1195
+Arlington,Quercus virginiana,1081
+Arlington,Sabal palmetto,0
+Arlington,Washingtonia robusta,0
+Arlington,Pinus canariensis,0
+Arlington,Platanus acerifolia,0
+Arlington,Liquidambar styraciflua,91
+Arlington,Ulmus crassifolia,1570
+Arlington,Quercus laurifolia,0
+Arlington,Pyrus calleryana,241
+Arlington,Magnolia grandiflora,39
+Arlington,Syagrus romanzoffianum,0
+Arlington,Cupaniopsis anacardioides,0
+Arlington,Taxodium distichum,581
+Arlington,Pinus elliottii,76
+CapeCoral,Lagerstroemia indica,503
+CapeCoral,Quercus virginiana,5727
+CapeCoral,Sabal palmetto,6632
+CapeCoral,Washingtonia robusta,0
+CapeCoral,Pinus canariensis,0
+CapeCoral,Platanus acerifolia,7
+CapeCoral,Liquidambar styraciflua,39
+CapeCoral,Ulmus crassifolia,0
+CapeCoral,Quercus laurifolia,903
+CapeCoral,Pyrus calleryana,0
+CapeCoral,Magnolia grandiflora,122
+CapeCoral,Syagrus romanzoffianum,817
+CapeCoral,Cupaniopsis anacardioides,421
+CapeCoral,Taxodium distichum,1724
+CapeCoral,Pinus elliottii,3298
+Orlando,Lagerstroemia indica,14988
+Orlando,Quercus virginiana,17126
+Orlando,Sabal palmetto,2855
+Orlando,Washingtonia robusta,1384
+Orlando,Pinus canariensis,0
+Orlando,Platanus acerifolia,0
+Orlando,Liquidambar styraciflua,284
+Orlando,Ulmus crassifolia,0
+Orlando,Quercus laurifolia,10620
+Orlando,Pyrus calleryana,113
+Orlando,Magnolia grandiflora,1952
+Orlando,Syagrus romanzoffianum,817
+Orlando,Cupaniopsis anacardioides,9
+Orlando,Taxodium distichum,270
+Orlando,Pinus elliottii,945
+Tampa,Lagerstroemia indica,2907
+Tampa,Quercus virginiana,5682
+Tampa,Sabal palmetto,1406
+Tampa,Washingtonia robusta,1059
+Tampa,Pinus canariensis,0
+Tampa,Platanus acerifolia,0
+Tampa,Liquidambar styraciflua,13
+Tampa,Ulmus crassifolia,0
+Tampa,Quercus laurifolia,1280
+Tampa,Pyrus calleryana,2
+Tampa,Magnolia grandiflora,349
+Tampa,Syagrus romanzoffianum,0
+Tampa,Cupaniopsis anacardioides,5
+Tampa,Taxodium distichum,498
+Tampa,Pinus elliottii,1299
+Plano,Lagerstroemia indica,0
+Plano,Quercus virginiana,1906
+Plano,Sabal palmetto,0
+Plano,Washingtonia robusta,0
+Plano,Pinus canariensis,0
+Plano,Platanus acerifolia,145
+Plano,Liquidambar styraciflua,143
+Plano,Ulmus crassifolia,3641
+Plano,Quercus laurifolia,0
+Plano,Pyrus calleryana,815
+Plano,Magnolia grandiflora,132
+Plano,Syagrus romanzoffianum,0
+Plano,Cupaniopsis anacardioides,0
+Plano,Taxodium distichum,1598
+Plano,Pinus elliottii,1
+Anaheim,Lagerstroemia indica,3771
+Anaheim,Quercus virginiana,113
+Anaheim,Sabal palmetto,0
+Anaheim,Washingtonia robusta,4379
+Anaheim,Pinus canariensis,2317
+Anaheim,Platanus acerifolia,1264
+Anaheim,Liquidambar styraciflua,1491
+Anaheim,Ulmus crassifolia,8
+Anaheim,Quercus laurifolia,0
+Anaheim,Pyrus calleryana,320
+Anaheim,Magnolia grandiflora,5266
+Anaheim,Syagrus romanzoffianum,1706
+Anaheim,Cupaniopsis anacardioides,1318
+Anaheim,Taxodium distichum,0
+Anaheim,Pinus elliottii,0
+GardenGrove,Lagerstroemia indica,2358
+GardenGrove,Quercus virginiana,0
+GardenGrove,Sabal palmetto,2
+GardenGrove,Washingtonia robusta,596
+GardenGrove,Pinus canariensis,1049
+GardenGrove,Platanus acerifolia,593
+GardenGrove,Liquidambar styraciflua,365
+GardenGrove,Ulmus crassifolia,0
+GardenGrove,Quercus laurifolia,0
+GardenGrove,Pyrus calleryana,467
+GardenGrove,Magnolia grandiflora,696
+GardenGrove,Syagrus romanzoffianum,897
+GardenGrove,Cupaniopsis anacardioides,1438
+GardenGrove,Taxodium distichum,0
+GardenGrove,Pinus elliottii,0
+HuntingtonBeach,Lagerstroemia indica,3896
+HuntingtonBeach,Quercus virginiana,0
+HuntingtonBeach,Sabal palmetto,0
+HuntingtonBeach,Washingtonia robusta,4037
+HuntingtonBeach,Pinus canariensis,1352
+HuntingtonBeach,Platanus acerifolia,574
+HuntingtonBeach,Liquidambar styraciflua,170
+HuntingtonBeach,Ulmus crassifolia,0
+HuntingtonBeach,Quercus laurifolia,0
+HuntingtonBeach,Pyrus calleryana,1233
+HuntingtonBeach,Magnolia grandiflora,372
+HuntingtonBeach,Syagrus romanzoffianum,4681
+HuntingtonBeach,Cupaniopsis anacardioides,1431
+HuntingtonBeach,Taxodium distichum,1
+HuntingtonBeach,Pinus elliottii,0
+Irvine,Lagerstroemia indica,1390
+Irvine,Quercus virginiana,0
+Irvine,Sabal palmetto,0
+Irvine,Washingtonia robusta,542
+Irvine,Pinus canariensis,4578
+Irvine,Platanus acerifolia,1195
+Irvine,Liquidambar styraciflua,1773
+Irvine,Ulmus crassifolia,0
+Irvine,Quercus laurifolia,0
+Irvine,Pyrus calleryana,0
+Irvine,Magnolia grandiflora,530
+Irvine,Syagrus romanzoffianum,0
+Irvine,Cupaniopsis anacardioides,1244
+Irvine,Taxodium distichum,0
+Irvine,Pinus elliottii,0
+Oakland,Lagerstroemia indica,1953
+Oakland,Quercus virginiana,0
+Oakland,Sabal palmetto,0
+Oakland,Washingtonia robusta,274
+Oakland,Pinus canariensis,6
+Oakland,Platanus acerifolia,3788
+Oakland,Liquidambar styraciflua,3312
+Oakland,Ulmus crassifolia,0
+Oakland,Quercus laurifolia,0
+Oakland,Pyrus calleryana,2683
+Oakland,Magnolia grandiflora,1375
+Oakland,Syagrus romanzoffianum,16
+Oakland,Cupaniopsis anacardioides,0
+Oakland,Taxodium distichum,0
+Oakland,Pinus elliottii,0
+Ontario,Lagerstroemia indica,4630
+Ontario,Quercus virginiana,7
+Ontario,Sabal palmetto,0
+Ontario,Washingtonia robusta,1584
+Ontario,Pinus canariensis,3307
+Ontario,Platanus acerifolia,3328
+Ontario,Liquidambar styraciflua,4392
+Ontario,Ulmus crassifolia,0
+Ontario,Quercus laurifolia,0
+Ontario,Pyrus calleryana,2793
+Ontario,Magnolia grandiflora,1214
+Ontario,Syagrus romanzoffianum,0
+Ontario,Cupaniopsis anacardioides,1108
+Ontario,Taxodium distichum,1
+Ontario,Pinus elliottii,0
+Lagerstroemia indica,Myrtales,37591
+Quercus virginiana,Fagales,31642
+Quercus laurifolia,Fagales,12803
+Sabal palmetto,Arecales,10895
+Washingtonia robusta,Arecales,13855
+Syagrus romanzoffianum,Arecales,8934
+Pinus canariensis,Pinales,12609
+Taxodium distichum,Pinales,4673
+Pinus elliottii,Pinales,5619
+Platanus acerifolia,Proteales,10894
+Liquidambar styraciflua,Saxifragales,12073
+Ulmus crassifolia,Rosales,5219
+Pyrus calleryana,Rosales,8667
+Magnolia grandiflora,Magnoliales,12047
+Cupaniopsis anacardioides,Sapindales,6974
+Myrtales,Magnoliopsida,37591
+Fagales,Magnoliopsida,44445
+Proteales,Magnoliopsida,10894
+Saxifragales,Magnoliopsida,12073
+Rosales,Magnoliopsida,13886
+Magnoliales,Magnoliopsida,12047
+Sapindales,Magnoliopsida,6974
+Arecales,Liliopsida,33684
+Pinales,Pinopsida,22901
