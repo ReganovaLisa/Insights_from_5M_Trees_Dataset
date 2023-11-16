@@ -1,0 +1,91 @@
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  header {
+    font-size: 72px;
+    color: #ffffff;
+    background: url("../web_page/forest-background.jpg");
+    background-size: auto;
+    height: 200px;
+    text-align: center;
+  }
+  
+  header h1 {
+    padding: 50px 0;
+    font-size: 72px;
+    font-family: 'Roboto Slab', serif;
+  }
+  
+  body {
+    background-color: #ffffff;
+    font-family: 'Fira Sans', sans-serif;
+    margin-bottom: 50px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    font-family: 'Roboto Slab', serif;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-family: 'Roboto Slab', serif;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    font-family: 'Roboto Slab', serif;
+    margin-left: 20px;
+  }
+  
+  p {
+    font-size: 20px;
+    font-family: 'Fira Sans', serif;
+    margin-left: 20px;
+  }
+  
+  ul li {
+    font-family: 'Fira Sans', serif;
+    font-size: 20px;
+  }
+  
+  form{
+    font-size: 20px;
+    font-family: 'Fira Sans', serif;
+    margin-left: 20px;
+  
+  }
+  .plot_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh; 
+  }
+
+
+.node rect {
+    cursor: move;
+    fill-opacity: .9;
+    shape-rendering: crispEdges;
+}
+
+.node text {
+    font-family: 'Fira Sans', serif;
+    font-size: 16px;
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.link {
+    fill: none;
+}
+
+.link:hover {
+    stroke-opacity: .5;
+}
+  
