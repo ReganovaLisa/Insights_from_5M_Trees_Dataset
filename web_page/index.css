@@ -65,14 +65,15 @@ form{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh; 
+  height: 80vh; 
 }
 
 .plot_container_narrow {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh; 
+  height: 50vh; 
+  
 }
 
 svg {
