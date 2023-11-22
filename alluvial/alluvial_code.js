@@ -2,6 +2,7 @@
 var units = "Widgets";
 
 var screenWidth = window.innerWidth * 0.9;
+console.log(screenWidth)
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
     width = screenWidth - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
@@ -17,8 +18,6 @@ var svg = d3v3.select("#chart").append("svg")
   .append("g")
     .attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
-
-
       
 
 // Set the sankey diagram properties
