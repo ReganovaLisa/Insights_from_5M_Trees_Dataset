@@ -1,25 +1,29 @@
 
 var units = "Widgets";
 
+var screenWidth = window.innerWidth * 0.9;
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
-    width = 1200 - margin.left - margin.right,
+    width = screenWidth - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
-var formatNumber = d3.format(",.0f"),    // zero decimal places
+var formatNumber = d3v3.format(",.0f"),    // zero decimal places
     format = function(d) { return formatNumber(d) + " " + units; },
-    color = d3.scale.category20();
+    color = d3v3.scale.category20();
 
 // append the svg canvas to the page
-var svg = d3.select("#chart").append("svg")
+var svg = d3v3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
 
+
+      
+
 // Set the sankey diagram properties
 const align = "justify"
-var sankey = d3.sankey()
+var sankey = d3v3.sankey()
     .nodeWidth(30)
     .nodePadding(16)
     .size([width, height]);
@@ -27,7 +31,7 @@ var sankey = d3.sankey()
 var path = sankey.link();
 
 // load the data (using the timelyportfolio csv method)
-d3.csv("data/alluvial_data.csv", function(error, data) {
+d3v3.csv("../alluvial/data/alluvial_data.csv", function(error, data) {
 
   //set up graph in same style as original example but empty
   graph = {"nodes" : [], "links" : []};
@@ -42,7 +46,7 @@ d3.csv("data/alluvial_data.csv", function(error, data) {
      });
 
      // return only the distinct / unique nodes
-     graph.nodes = d3.keys(d3.nest()
+     graph.nodes = d3v3.keys(d3v3.nest()
        .key(function (d) { return d.name; })
        .map(graph.nodes));
 
@@ -88,7 +92,7 @@ d3.csv("data/alluvial_data.csv", function(error, data) {
       .attr("class", "node")
       .attr("transform", function(d) { 
 		  return "translate(" + d.x + "," + d.y + ")"; })
-    .call(d3.behavior.drag()
+    .call(d3v3.behavior.drag()
       .origin(function(d) { return d; })
       .on("dragstart", function() { 
 		  this.parentNode.appendChild(this); })
@@ -101,7 +105,7 @@ d3.csv("data/alluvial_data.csv", function(error, data) {
       .style("fill", function(d) { 
 		  return d.color = color(d.name.replace(/ .*/, "")); })
       .style("stroke", function(d) { 
-		  return d3.rgb(d.color).darker(2); })
+		  return d3v3.rgb(d.color).darker(2); })
     .append("title")
       .text(function(d) { 
 		  return d.name + "\n" + format(d.value); });
@@ -120,7 +124,7 @@ d3.csv("data/alluvial_data.csv", function(error, data) {
 
 // the function for moving the nodes
   function dragmove(d) {
-    d3.select(this).attr("transform", 
+    d3v3.select(this).attr("transform", 
         "translate(" + d.x + "," + (
                 d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))
             ) + ")");

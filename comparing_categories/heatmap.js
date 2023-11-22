@@ -12,7 +12,7 @@ function run_heatmap(div_name) {
     .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.csv("data/california_top_five_trees.csv").then(function(data) {
+    d3.csv("../comparing_categories/data/california_top_five_trees.csv").then(function(data) {
 
         console.log(data);
 

@@ -11,7 +11,7 @@ function stackedGroupedBarPlot() {
     .classed('chart', true)
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  d3.csv("data/california_top_five_trees.csv").then(function (data) {
+  d3.csv("../comparing_categories/data/california_top_five_trees.csv").then(function (data) {
     const subgroups = data.columns.slice(1);
     const groups = data.map(d => (d.City));
 
@@ -108,6 +108,7 @@ function stackedGroupedBarPlot() {
       .append("text")
       .attr("x", width + 10 + size * 2)
       .attr("y", (d, i) => margin.top + i * (size + 5) + (size / 2))
+      .style("fill", "#fff")
       //.style("fill", d => color(d))
       .text(d => d)
       .attr("text-anchor", "left")

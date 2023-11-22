@@ -8,7 +8,7 @@ function makeSmallMultiple(colName, first) {
       margin.right = 0;
     }
   
-    d3.csv("data/california_top_five_trees.csv").then(function(data) {
+    d3.csv("../comparing_categories/data/california_top_five_trees.csv").then(function(data) {
       var subgroups = data.columns.slice(1);
       
       const sums = data.map(d => subgroups.map(colName => +d[colName]).reduce((el, r) => r + el, 0));
@@ -56,6 +56,7 @@ function makeSmallMultiple(colName, first) {
         .attr("text-anchor", "start")
         .attr("y", -5)
         .attr("x", 0)
+        .style("fill", "#fff")
         .text(colName)
         //.style("fill", color(colName));
       
@@ -68,11 +69,12 @@ function makeSmallMultiple(colName, first) {
         .attr("y", d => y(d.key))
         .attr("x", x(0) + 1)
         .attr("width", d => x(d.val))
+        
         .attr("height", y.bandwidth() - 2);
     });
   }
   
-  d3.csv("data/california_top_five_trees.csv").then(function(data) {
+  d3.csv("../comparing_categories/data/california_top_five_trees.csv").then(function(data) {
       var subgroups = data.columns.slice(1);
       subgroups.push("Total");
       subgroups.forEach((gr,id) => makeSmallMultiple(gr, id == 0));

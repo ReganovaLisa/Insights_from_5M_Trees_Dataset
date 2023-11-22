@@ -1,28 +1,168 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html>
-<head>
-    <title>Main Page</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://d3js.org/d3-array.v2.min.js"></script>
-</head>
-<body>
-    <header>
-        <h1>A story that Trees tell us</h1>
-    </header>
+	<head>
+		<title>Main page</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/sankey.js"></script>
 
-    <h2>"Croissant & Macchiato" </h2>
-    <h3>Aliaksandr Shcharbitski and Elizaveta Reganova</h3>
+	<script>
+    var d3v3 = window.d3;
+    window.d3 = null;
+	</script>
+	<script src="https://d3js.org/d3.v5.js"></script>
+	<script src="https://d3js.org/d3-array.v2.min.js"></script>
 
-    <p>This project aims to display a few data visualizations for Kaggle <a href="https://www.kaggle.com/datasets/mexwell/5m-trees-dataset/data">5M Trees Dataset</a>.</p>
+	<body class="is-preload">
 
-    <h2>Content:</h2>
-    <ul>
-        <li>
-            <a href="../comparing_categories/categories.html">Comparing categories</a>
-        </li>
-        <li> <a href = "../alluvial/alluvial.html" >Alluvial</a></li>
-        <li>the 3rd and etc.</li>
-    </ul>
-</body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-gem"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>A story that Trees tell us</h1>
+								<p>This project aims to display a few data visualizations for Kaggle <a href="https://www.kaggle.com/datasets/mexwell/5m-trees-dataset/data">5M Trees Dataset</a>.</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#barplot"> Barplots </a></li>
+								<li><a href="#alluvial">Alluvial</a></li>
+								<li><a href="#t3">T3</a></li>
+								<li><a href="#t4">T4</a></li>
+								<!--<li><a href="#elements">Elements</a></li>-->
+							</ul>
+						</nav>
+					</header>
+
+				
+					<div id="main">
+
+						
+							<article id="barplot">
+								<h2 class="major">Who counted the most trees?</h2>
+								<p>  To gain insights into tree abundance across various cities in the United States, we can start by examining bar chart distributions of the twenty most frequently occurring tree species in each city.</p>
+
+								<p style="display: inline;">City to show data from:</p>
+								<select id="fileSelect" style="display: inline;">
+									<!-- <option value="../data_raw/OverlandPark_Final_2022-06-18.csv">OverlandPark</option>
+									<option value="../data_raw/Anaheim_Final_2022-06-18.csv">Anaheim</option>
+									<option value="../data_raw/Worcester_Final_2022-06-18.csv">Worcester</option>
+									<option value="../data_raw/Tampa_Final_2022-06-18.csv">Tampa</option> -->
+									<option value="../data_raw/Albuquerque_Final_2022-06-18.csv">Albuquerque</option>
+									<option value="../data_raw/Sacramento_Final_2022-06-18.csv">Sacramento</option>
+									<option value="../data_raw/Stockton_Final_2022-06-18.csv">Stockton</option>
+									<option value="../data_raw/SantaRosa_Final_2022-06-18.csv">SantaRosa</option>
+								</select>
+								
+								<p><br>Order species by:
+									<form>
+									
+										
+										<div class="radio-item">
+											<input type="radio" id="sortorder_tree_count" name="sortorder" value="tree_count" checked>
+											<label for="sortorder_tree_count">Tree name</label>
+										</div>
+										<div class="radio-item">
+											<input type="radio" id="sortorder_tree_name" name="sortorder" value="tree_name" checked>
+											<label for="sortorder_tree_name">Tree name</label>
+										</div>
+									</form>
+									</p>
+						
+									<div class="plot_container">
+										<div id="barContainer"></div>
+										<script src="../comparing_categories/barplot_easy.js"></script>
+									</div> 
+						
+
+									<h2>Comparison of biotopes in California cities</h2>
+        <p>For consistency, we selected cities with a comparable number of records, typically ranging from 60,000 to 80,000 trees. Subsequently, we identified the five most prevalent tree species among the selected cities. This process involved normalizing the species distribution based on the total number of trees within each city. After that, we added up the corresponding values for all cities and selected the arguments of the five largest. </p>
+        
+        <div class="plot_container_narrow">
+            <div id="my_dataviz"></div>
+            <script src="../comparing_categories/stacked_barplot.js"></script>
+        </div> 
+
+        <p>Same as above, but in percent scale:</p>
+        <div class="plot_container_narrow">
+            <div id="my_dataviz_percent"></div>
+            <script src="../comparing_categories/stacked_grouped_percent.js"></script>
+		</div>
+			<p>Now let's make grouping by 1 - city:</p>
+			<div class="plot_container_narrow">
+				<div id="my_dataviz_group"></div>
+				<script src="../comparing_categories/stacked_grouped_barchart.js"></script>
+			</div> 
+			<p>2 - species:</p>
+			<div class="plot_container_wide">
+				<div id="my_dataviz_small"></div>
+				<script src="../comparing_categories/small_multiple.js"></script>
+			</div> 
+			<h2>Tree species heatmap for most popular trees in California cities of similar size</h2>
+			<div class="plot_container">
+				<div id="heatmapContainer"></div>
+				<script src="../comparing_categories/heatmap.js"></script>
+			</div>
+			<p>As we can see, the distribution of species exhibits significant variation even among geographically close cities situated within the same state!</p>
+			
+		
+
+
+         
+								</article>
+
+						
+							<article id="alluvial">
+								<h2 class="major">Alluvial</h2>
+								<p id="chart">
+                                    <script src="../alluvial/alluvial_code.js"></script>
+                                <p><a href="https://www.kwanlin.com/blog/series-visualization/alluvial-plot/#:~:text=An%20alluvial%20plot%20is%20a,stacked%20bars%20represent%20different%20categories.">An alluvial plot</a> is a way to show proportions of observations across different categories.
+									Visually, an alluvial plot is made up of stacked bars, and between those bars are links.
+
+									Each set of stacked bars represents a categorical field. The separations within the stacked bars represent different categories.
+									
+									These stacked bars are more precisely referred to as strata (singular, stratum), and the vertical stacked bar themselves are called axis.
+									
+									The links between the bars conveys the set of observations shared between one categorical field and the next.
+									
+								</p>
+								<p>The entirety of these links (extending all the way from the left to the right of the plot) are more properly referred to as alluvia (alluvium in singular form).
+									
+									The segments of these alluvia that connect axis to axis are referred to as flows. This of these flows as shorter sugments of longer alluvia.
+									
+									The heights of the bars and the widths of the links represent the number of observations.</p>
+							</article>
+
+			
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; "Croissant & Macchiato": Aliaksandr Shcharbitski and Elizaveta Reganova.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            
+	</body>
 </html>
