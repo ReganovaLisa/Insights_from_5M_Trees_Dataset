@@ -137,11 +137,9 @@
 									The links between the bars conveys the set of observations shared between one categorical field and the next.
 									
 								</p>
-								<p>The entirety of these links (extending all the way from the left to the right of the plot) are more properly referred to as alluvia (alluvium in singular form).
-									
-									The segments of these alluvia that connect axis to axis are referred to as flows. This of these flows as shorter sugments of longer alluvia.
-									
-									The heights of the bars and the widths of the links represent the number of observations.</p>
+								<p>We selected three states sharing a similar latitude and providing access to oceans or straits, aiming to capture comparable biotopes. Our criteria included ensuring each state had a minimum of two documented cities, and we sought uniformity in the distribution of tree numbers across these cities. For a detailed insight into our city and tree species selection process, please refer to <a href="https://github.com/ReganovaLisa/Insights_from_5M_Trees_Dataset/blob/main/data_preparation/preprocessing_for_alluvial.ipynb">the corresponding repository</a>.</p>
+
+								<p>	The selection of plant species involved a following approach. Initially, we calculated the percentage of each tree species within every city. Subsequently, we created a dictionary for all selected cities, where each plant's name served as a key, and the corresponding value represented the cumulative percentage across all cities. This dictionary was then sorted, and the top 15 plants, ranked by value. Finally, employing <a href="https://api.gbif.org/v1/">GBIF</a>, we determined the order and class of these selected plant species.</p>
 							</article>
 
 			
