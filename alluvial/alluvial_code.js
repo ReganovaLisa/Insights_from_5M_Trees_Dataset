@@ -3,13 +3,13 @@ var units = "Widgets";
 
 var screenWidth = window.innerWidth * 0.9;
 console.log(screenWidth)
-var margin = {top: 10, right: 10, bottom: 10, left: 10},
+var margin = {top: 10, right: screenWidth*0.06, bottom: 10, left: screenWidth*0.03},
     width = screenWidth - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
 var formatNumber = d3v3.format(",.0f"),    // zero decimal places
     format = function(d) { return formatNumber(d) + " " + units; },
-    color = d3v3.scale.category20();
+    color = d3v3.scale.category20c();
 
 // append the svg canvas to the page
 var svg = d3v3.select("#chart").append("svg")
