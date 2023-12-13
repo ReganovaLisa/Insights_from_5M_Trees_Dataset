@@ -33,7 +33,7 @@ function RadarChart(id,  options, years) {
 	//var maxValue = Math.max(cfg.maxValue, d3.max(data, function(i){return d3.max(i.map(function(o){return o.value;}))}));
 	// years = ['2022', '2017', '2012', '2007'];
     var data;
-            d3.csv("average_temperature.csv", function(Data) {
+            d3.csv("data/average_temperature.csv", function(Data) {
                 filteredData = Data.filter(function(row) {
                     return row['year'] == years[0] && row['state'] == 'Idaho' ;
                 })[0];
@@ -201,18 +201,18 @@ function RadarChart(id,  options, years) {
 		.style("fill-opacity", cfg.opacityArea)
 		.on('mouseover', function (d,i){
 			//Dim all blobs
-			d3.selectAll(".radarArea")
-				.transition().duration(200)
-				.style("fill-opacity", 0.1); 
+			// d3.selectAll(".radarArea")
+			// 	.transition().duration(100)
+			// 	.style("fill-opacity", 0.1); 
 			//Bring back the hovered over blob
 			d3.select(this)
-				.transition().duration(200)
-				.style("fill-opacity", 0.1);	
+				.transition().duration(100)
+				.style("fill-opacity", 0.2);	
 		})
 		.on('mouseout', function(){
 			//Bring back all blobs
 			d3.selectAll(".radarArea")
-				.transition().duration(200)
+				.transition().duration(100)
 				.style("fill-opacity", cfg.opacityArea);
 		});
 		
@@ -263,7 +263,6 @@ function RadarChart(id,  options, years) {
 			tooltip
 				.attr('x', newX)
 				.attr('y', newY)
-				.text(Format(d.value))
 				.transition().duration(200)
 				.style('opacity', 1);
 		})
