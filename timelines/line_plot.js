@@ -9,14 +9,14 @@
 const svg2 = d3v6.select("#my_dataviz_line")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("height", height + margin.top + margin.bottom + 40)
     .append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 const svg3 = d3v6.select("#my_dataviz2")
       .append("svg")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("height", height + margin.top + margin.bottom + 20)
       .append("g")
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -89,7 +89,7 @@ d3v6.csv("../timelines/data/all_in_one_temperatire.csv").then(function (data) {
     // Add X axis --> it is a date format
     const x = d3v6.scalePoint()
       .domain(months)
-      .range([ 0, width ]);
+      .range([ 10, width ]);
     svg3.append("g")
       .attr("transform", `translate(0, ${height})`)
       .call(d3v6.axisBottom(x));
@@ -117,8 +117,8 @@ d3v6.csv("../timelines/data/all_in_one_temperatire.csv").then(function (data) {
       .data(allYears)
       .enter()
       .append("circle")
-        .attr("cx", function(d,i){ return 250 + 55*(i%2)}  )
-        .attr("cy", function(d,i){ return legendHight -  Math.floor(i/2)*20}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("cx", function(d,i){ return margin.left + 55*(i%2)}  )
+        .attr("cy", function(d,i){ return  10+ Math.floor(i/2)*20}) // 100 is where the first dot appears. 25 is the distance between dots
         .attr("r", 5)
         .style("fill", function(d){ return  myColor(d)})
 
@@ -127,8 +127,8 @@ d3v6.csv("../timelines/data/all_in_one_temperatire.csv").then(function (data) {
       .data(allYears)
       .enter()
       .append("text")
-        .attr("x", function(d,i){ return 260 + 55*(i%2)}  )
-        .attr("y", function(d,i){ return legendHight + 1 -  Math.floor(i/2)*20}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("x", function(d,i){ return  margin.left + 10 +  55*(i%2)}  )
+        .attr("y", function(d,i){ return  11 +  Math.floor(i/2)*20}) // 100 is where the first dot appears. 25 is the distance between dots
         .style("fill", function(d){ return  myColor(d)})
         .text(function(d){ return d})
         .attr("text-anchor", "left")
@@ -145,7 +145,7 @@ d3v6.csv("../timelines/data/all_in_one_temperatire.csv").then(function (data) {
         .datum(Object.entries(data.filter(d => d.state==curState && +d.year == year)[0])
               .filter(el => el[0].endsWith("minimal")))
         .attr("d", d3v6.line()
-          .x(function(d) { return x(d[0].split('_')[0]) })
+          .x(function(d) { return x(d[0].split('_')[0]) +10})
           .y(function(d) { return y(+d[1]) })
         )
         .attr("stroke", function(d){ return tinycolor(myColor(year)).lighten(colorStep).toString() })
@@ -159,7 +159,7 @@ d3v6.csv("../timelines/data/all_in_one_temperatire.csv").then(function (data) {
           .datum(Object.entries(data.filter(d => d.state==curState && +d.year == year)[0])
                 .filter(el => el[0].endsWith("maximal")))
           .attr("d", d3v6.line()
-            .x(function(d) { return x(d[0].split('_')[0]) })
+            .x(function(d) { return x(d[0].split('_')[0]) +10})
             .y(function(d) { return y(+d[1]) })
           )
           .attr("stroke", function(d){ return tinycolor(myColor(year)).darken(colorStep).toString() })
@@ -172,7 +172,7 @@ d3v6.csv("../timelines/data/all_in_one_temperatire.csv").then(function (data) {
               .filter(el => el[0].endsWith("average")))
           .enter()
           .append("circle")
-              .attr("cx", function (d) { return x(d[0].split('_')[0]); } )
+              .attr("cx", function (d) { return x(d[0].split('_')[0]) +10; } )
               .attr("cy", function (d) { return y(+d[1]); } )
               .attr("r", 3)
               .style("fill", tinycolor(myColor(year)).toString())
