@@ -6,28 +6,8 @@
 /////////////////////////////////////////////////////////
 
 
-var margin = {top: 100, right: 100, bottom: 100, left: 100},
-	width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
-	height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
-	
 
-var color = d3.scale.category10();
-				
-var radarChartOptions = {
-	w: width,
-	h: height,
-	margin: margin,
-	maxValue: 0.5,
-	levels: 5,
-	roundStrokes: true,
-	color: color
-};
-var chosen_years = ['2022', '2017', '2012', '2007', '2002'];
-
-RadarChart(".radarChart",  radarChartOptions, chosen_years);
-
-
-function RadarChart(id,  options, years) {
+function RadarChart(id,  options, years, chosenState) {
 	var cfg = {
 	 w: 600,				//Width of the circle
 	 h: 600,				//Height of the circle
@@ -55,18 +35,23 @@ function RadarChart(id,  options, years) {
 	//var maxValue = Math.max(cfg.maxValue, d3v356.max(data, function(i){return d3v356.max(i.map(function(o){return o.value;}))}));
 	// years = ['2022', '2017', '2012', '2007'];
     var data;
+	years = Array.from(years).sort()
 	d3v356.csv("../timelines/data/average_temperature.csv", function(Data) {
 
                 filteredData = Data.filter(function(row) {
-                    return row['year'] == years[0] && row['state'] == 'Idaho' ;
+                    return row['year'] == years[i] && row['state'] == chosenState ;
                 })[0];
+
+				console.log(Data)
+				console.log(filteredData)
                
                 data = [                    
             ];
             for (let i = 0; i < years.length; i++) {
                 filteredData = Data.filter(function(row) {
-                    return row['year'] == years[i] && row['state'] == 'Idaho' ;
+                    return row['year'] == years[i] && row['state'] == chosenState ;
                 })[0];
+				console.log(filteredData)
                 data.push([
                     {axis: "January", value:filteredData.January},
                     {axis: "February", value:filteredData.February},
@@ -90,7 +75,7 @@ function RadarChart(id,  options, years) {
         return +o.value +1 ;}))});
 	
     var minValue =  d3v356.min(data, function(i){return d3v356.min(i.map(function(o){return +o.value -1;}))});
-	console.log(minValue)
+	console.log(Data)
 	           
 	var allAxis = (data[0].map(function(i, j){return i.axis})),	//Names of each axis
 		total = allAxis.length,					//The number of different axes
@@ -377,3 +362,8 @@ var legend = svg.append("g")
             });
 	
 }//RadarChart
+
+
+
+//curYears = ['2022', '2017', '2012', '2007', '2002'];
+
