@@ -10,13 +10,28 @@
 	</head>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/sankey.js"></script>
+</script>
 
 	<script>
     var d3v3 = window.d3;
     window.d3 = null;
 	</script>
+
+
+
+<script src="https://d3js.org/d3.v6.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
+<script>
+    var d3v6 = window.d3;
+    window.d3 = null;
+	</script>
+
 	<script src="https://d3js.org/d3.v5.js"></script>
-	<script src="https://d3js.org/d3-array.v2.min.js"></script>
+	<script src="https://d3js.org/d3-array.v2.min.js"></script> 
+
+
+
+
 
 	<body class="is-preload">
 
@@ -38,7 +53,7 @@
 							<ul>
 								<li><a href="#barplot"> Barplots </a></li>
 								<li><a href="#alluvial">Alluvial</a></li>
-								<li><a href="#t3">T3</a></li>
+								<li><a href="#timelines">Timelines</a></li>
 								<li><a href="#t4">T4</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
@@ -142,8 +157,52 @@
 								<p>	The selection of plant species involved a following approach. Initially, we calculated the percentage of each tree species within every city. Subsequently, we created a dictionary for all selected cities, where each plant's name served as a key, and the corresponding value represented the cumulative percentage across all cities. This dictionary was then sorted, and the top 15 plants, ranked by value. Finally, employing <a href="https://api.gbif.org/v1/">GBIF</a>, we determined the order and class of these selected plant species.</p>
 							</article>
 
-			
-					</div>
+							<article id="timelines">
+								<h2 class="major">Timelines and distributions</h2>
+								<p id="">
+                                    <form> 
+									<div class="multipleSelection"> 
+										<div class="selectBox" 
+											onclick="showCheckboxes()"> 
+											<select> 
+												<option>Select options</option> 
+											</select> 
+											<div class="overSelect"></div> 
+										</div> 
+
+										<div id="checkBoxes"></div> 
+									</div> 
+									</form> 
+
+						<script> 
+						var show = true; 
+
+						function showCheckboxes() { 
+							var checkboxes =  
+								document.getElementById("checkBoxes"); 
+
+							if (show) { 
+								checkboxes.style.display = "block"; 
+								show = false; 
+							} else { 
+								checkboxes.style.display = "none"; 
+								show = true; 
+							} 
+						} 
+						</script> 
+
+						<select id="selectButton"></select>
+
+						<div id="my_dataviz2"></div>
+						<p>Same as above, but in percent scale:</p>
+
+						<div id="my_dataviz_line"></div>
+
+						<script src="../timelines/line_plot.js"></script>
+
+									</article>
+
+			</div>
 
 				<!-- Footer -->
 					<footer id="footer">
