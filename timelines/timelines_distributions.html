@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>SANKEY Experiment</title>
+
+<script src="https://d3js.org/d3.v6.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="timeline.css">
+
+<body>
+
+  <header>
+    <h1>Yearly temperature</h1>
+  </header>
+
+
+<br/>
+<br/>
+
+
+<form> 
+  <div class="multipleSelection"> 
+      <div class="selectBox" 
+          onclick="showCheckboxes()"> 
+          <select> 
+              <option>Select options</option> 
+          </select> 
+          <div class="overSelect"></div> 
+      </div> 
+
+      <div id="checkBoxes"></div> 
+  </div> 
+</form> 
+
+<script> 
+  var show = true; 
+
+  function showCheckboxes() { 
+      var checkboxes =  
+          document.getElementById("checkBoxes"); 
+
+      if (show) { 
+          checkboxes.style.display = "block"; 
+          show = false; 
+      } else { 
+          checkboxes.style.display = "none"; 
+          show = true; 
+      } 
+  } 
+</script> 
+
+<select id="selectButton"></select>
+
+<div id="my_dataviz"></div>
+
+
+<div id="my_dataviz2"></div>
+
+<script src="line_plot.js"></script>
+
+</body>
+</html>
