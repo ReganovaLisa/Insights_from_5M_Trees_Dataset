@@ -266,8 +266,8 @@ function plot_data_kde(allYears) {
   
   // Create a color scale using these means.
   const myColor_min = d3.scaleSequential()
-    .domain([d3.min(allMeans_min) - 1, d3.max(allMeans_min) + 1])
-    .range(["cyan", "blue"]);
+    .domain([d3.min(allMeans_min), d3.max(allMeans_min) + 10])
+    .range(["blue","cyan"]);
 
 
     allMeans_max = []
@@ -283,7 +283,7 @@ function plot_data_kde(allYears) {
     
     // Create a color scale using these means.
     const myColor_max = d3.scaleSequential()
-      .domain([d3.min(allMeans_max) - 1, d3.max(allMeans_max) + 1])
+      .domain([d3.min(allMeans_max) - 10, d3.max(allMeans_max)])
       .range(["yellow", "red"]);
 
   // Add X axis
@@ -331,13 +331,26 @@ function plot_data_kde(allYears) {
         .filter(el => el[0].endsWith("maximal"))
         .map(function(d){  return +d[1]; }) )
       allDensity_max.push({key: key, density: density})
+      allDensity_min[i].key_max = key
+      allDensity_min[i].allDensity_max = density //.push({key: key, density: density})
   }
+
+
+
 
   // Add areas
   svg2.selectAll("areas")
     .data(allDensity_min)
     .join("path")
       .attr("transform", function(d){return(`translate(0, ${(yName(d.key)-height)})` )})
+      .attr("stroke", function(d){
+        grp = d.key ;
+        index = categories.indexOf(grp)
+        value = allMeans_min[index]
+        return myColor_min( value  )
+      })
+      .attr("stroke-width", 3)
+      .attr("stroke-opacity", 0.9)
       .attr("fill", function(d){
         grp = d.key ;
         index = categories.indexOf(grp)
@@ -345,9 +358,7 @@ function plot_data_kde(allYears) {
         return myColor_min( value  )
       })
       .datum(function(d){return(d.density)})
-      .attr("opacity", 0.7)
-      .attr("stroke", "#000")
-      .attr("stroke-width", 0.1)
+      .attr("fill-opacity", 0.2)
       .attr("d",  d3.line()
           .curve(d3.curveBasis)
           .x(function(d) { return x(d[0]); })
@@ -358,6 +369,14 @@ function plot_data_kde(allYears) {
     .data(allDensity_max)
     .join("path")
       .attr("transform", function(d){return(`translate(0, ${(yName(d.key)-height)})` )})
+      .attr("stroke", function(d){
+        grp = d.key ;
+        index = categories.indexOf(grp)
+        value = allMeans_max[index]
+        return myColor_max( value  )
+      })
+      .attr("stroke-width", 3)
+      .attr("stroke-opacity", 0.9)
       .attr("fill", function(d){
         grp = d.key ;
         index = categories.indexOf(grp)
@@ -365,9 +384,7 @@ function plot_data_kde(allYears) {
         return myColor_max( value  )
       })
       .datum(function(d){return(d.density)})
-      .attr("opacity", 0.7)
-      .attr("stroke", "#000")
-      .attr("stroke-width", 0.1)
+      .attr("fill-opacity", 0.2)
       .attr("d",  d3.line()
           .curve(d3.curveBasis)
           .x(function(d) { return x(d[0]); })
