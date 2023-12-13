@@ -33,7 +33,7 @@ function RadarChart(id,  options, years) {
 	//var maxValue = Math.max(cfg.maxValue, d3.max(data, function(i){return d3.max(i.map(function(o){return o.value;}))}));
 	// years = ['2022', '2017', '2012', '2007'];
     var data;
-            d3.csv("average_temperature.csv", function(Data) {
+            d3.csv("../data/average_temperature.csv", function(Data) {
                 filteredData = Data.filter(function(row) {
                     return row['year'] == years[0] && row['state'] == 'Idaho' ;
                 })[0];
