@@ -9,14 +9,14 @@
 const svg2 = d3v6.select("#my_dataviz_line")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("height", height + margin.top + margin.bottom + 40)
     .append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 const svg3 = d3v6.select("#my_dataviz2")
       .append("svg")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom + 40)
+        .attr("height", height + margin.top + margin.bottom + 20)
       .append("g")
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 

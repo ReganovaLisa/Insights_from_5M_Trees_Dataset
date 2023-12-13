@@ -19,7 +19,7 @@ function RadarChart(id,  options, years) {
 	 opacityCircles: 0.1, 	//The opacity of the circles of each blob
 	 strokeWidth: 2, 		//The width of the stroke around each blob
 	 roundStrokes: false,	//If true the area and stroke will follow a round path (cardinal-closed)
-	 color: d3.scale.category10()	//Color function
+	 color: d3v356.scale.category10()	//Color function
 	};
 	
 	//Put all of the options into a variable called cfg
@@ -30,10 +30,10 @@ function RadarChart(id,  options, years) {
 	}//if
 	
 	//If the supplied maxValue is smaller than the actual one, replace by the max in the data
-	//var maxValue = Math.max(cfg.maxValue, d3.max(data, function(i){return d3.max(i.map(function(o){return o.value;}))}));
+	//var maxValue = Math.max(cfg.maxValue, d3v356.max(data, function(i){return d3v356.max(i.map(function(o){return o.value;}))}));
 	// years = ['2022', '2017', '2012', '2007'];
     var data;
-            d3.csv("../data/average_temperature.csv", function(Data) {
+            d3v356.csv("../timelines/data/average_temperature.csv", function(Data) {
                 filteredData = Data.filter(function(row) {
                     return row['year'] == years[0] && row['state'] == 'Idaho' ;
                 })[0];
@@ -63,20 +63,20 @@ function RadarChart(id,  options, years) {
               }
                 console.log("freqData", data);
                 
-    var maxValue = d3.max(data, function(i){return d3.max(i.map(function(o){console.log(o);
+    var maxValue = d3v356.max(data, function(i){return d3v356.max(i.map(function(o){console.log(o);
         return +o.value +1 ;}))});
 	
-    var minValue =  d3.min(data, function(i){return d3.min(i.map(function(o){return +o.value -1;}))});
+    var minValue =  d3v356.min(data, function(i){return d3v356.min(i.map(function(o){return +o.value -1;}))});
 	console.log(minValue)
 	           
 	var allAxis = (data[0].map(function(i, j){return i.axis})),	//Names of each axis
 		total = allAxis.length,					//The number of different axes
 		radius = Math.min(cfg.w/2, cfg.h/2), 	//Radius of the outermost circle
-		// Format = d3.format('%'),			 	//Percentage formatting
+		// Format = d3v356.format('%'),			 	//Percentage formatting
 		angleSlice = Math.PI * 2 / total;		//The width in radians of each "slice"
 	
 	//Scale for the radius
-	var rScale = d3.scale.linear()
+	var rScale = d3v356.scale.linear()
 		.range([0, radius])
 		.domain([minValue, maxValue]);
 		
@@ -85,10 +85,10 @@ function RadarChart(id,  options, years) {
 	/////////////////////////////////////////////////////////
 
 	//Remove whatever chart with the same id/class was present before
-	d3.select(id).select("svg").remove();
+	d3v356.select(id).select("svg").remove();
 	
 	//Initiate the radar chart SVG
-	var svg = d3.select(id).append("svg")
+	var svg = d3v356.select(id).append("svg")
 			.attr("width",  cfg.w + cfg.margin.left + cfg.margin.right)
 			.attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
 			.attr("class", "radar"+id);
@@ -116,7 +116,7 @@ function RadarChart(id,  options, years) {
 	
 	//Draw the background circles
 	axisGrid.selectAll(".levels")
-	   .data(d3.range(1,(cfg.levels+1)).reverse())
+	   .data(d3v356.range(1,(cfg.levels+1)).reverse())
 	   .enter()
 		.append("circle")
 		.attr("class", "gridCircle")
@@ -128,14 +128,14 @@ function RadarChart(id,  options, years) {
 
 	//Text indicating at what % each level is
 	axisGrid.selectAll(".axisLabel")
-	   .data(d3.range(1,(cfg.levels+1)).reverse())
+	   .data(d3v356.range(1,(cfg.levels+1)).reverse())
 	   .enter().append("text")
 	   .attr("class", "axisLabel")
 	   .attr("x", 4)
 	   .attr("y", function(d){return -d*radius/cfg.levels;})
 	   .attr("dy", "0.4em")
 	   .style("font-size", "10px")
-	   .attr("fill", "#737373")
+	   .attr("fill", "white")
 	   .text(function(d,i) { console.log(d) ; return Math.round((maxValue - minValue)* d/cfg.levels + minValue); });
 
 	/////////////////////////////////////////////////////////
@@ -166,6 +166,7 @@ function RadarChart(id,  options, years) {
 		.attr("dy", "0.35em")
 		.attr("x", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.cos(angleSlice*i - Math.PI/2); })
 		.attr("y", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.sin(angleSlice*i - Math.PI/2); })
+		.attr("fill", "white")
 		.text(function(d){return d})
 		.call(wrap, cfg.wrapWidth);
 
@@ -174,7 +175,7 @@ function RadarChart(id,  options, years) {
 	/////////////////////////////////////////////////////////
 	
 	//The radial line function
-	var radarLine = d3.svg.line.radial()
+	var radarLine = d3v356.svg.line.radial()
 		.interpolate("linear-closed")
 		.radius(function(d) { return rScale(d.value); })
 		.angle(function(d,i) {	return i*angleSlice; });
@@ -201,17 +202,17 @@ function RadarChart(id,  options, years) {
 		.style("fill-opacity", cfg.opacityArea)
 		.on('mouseover', function (d,i){
 			//Dim all blobs
-			d3.selectAll(".radarArea")
+			d3v356.selectAll(".radarArea")
 				.transition().duration(200)
 				.style("fill-opacity", 0.1); 
 			//Bring back the hovered over blob
-			d3.select(this)
+			d3v356.select(this)
 				.transition().duration(200)
 				.style("fill-opacity", 0.1);	
 		})
 		.on('mouseout', function(){
 			//Bring back all blobs
-			d3.selectAll(".radarArea")
+			d3v356.selectAll(".radarArea")
 				.transition().duration(200)
 				.style("fill-opacity", cfg.opacityArea);
 		});
@@ -257,8 +258,8 @@ function RadarChart(id,  options, years) {
 		.style("fill", "none")
 		.style("pointer-events", "all")
 		.on("mouseover", function(d,i) {
-			newX =  parseFloat(d3.select(this).attr('cx')) - 10;
-			newY =  parseFloat(d3.select(this).attr('cy')) - 10;
+			newX =  parseFloat(d3v356.select(this).attr('cx')) - 10;
+			newY =  parseFloat(d3v356.select(this).attr('cy')) - 10;
 					
 			tooltip
 				.attr('x', newX)
@@ -285,7 +286,7 @@ function RadarChart(id,  options, years) {
 	//Wraps SVG text	
 	function wrap(text, width) {
 	  text.each(function() {
-		var text = d3.select(this),
+		var text = d3v356.select(this),
 			words = text.text().split(/\s+/).reverse(),
 			word,
 			line = [],
@@ -315,10 +316,10 @@ function RadarChart(id,  options, years) {
 var text = svg.append("text")
     .attr("class", "title")
     .attr('transform', 'translate(90,0)') 
-    .attr("x", w - 70)
+    .attr("x", 10)
     .attr("y", 10)
     .attr("font-size", "12px")
-    .attr("fill", "#404040")
+    .attr("fill", "white")
     .text("Chosen years:");
 
 //Initiate Legend   
@@ -333,7 +334,7 @@ var legend = svg.append("g")
       .data(years)
       .enter()
       .append("rect")
-      .attr("x", w - 65)
+      .attr("x",10)
       .attr("y", function(d, i){ return i * 20;})
       .attr("width", 10)
       .attr("height", 10)
@@ -344,10 +345,10 @@ var legend = svg.append("g")
       .data(years)
       .enter()
       .append("text")
-      .attr("x", w - 52)
+      .attr("x", 23)
       .attr("y", function(d, i){ return i * 20 + 9;})
       .attr("font-size", "11px")
-      .attr("fill", "#737373")
+      .attr("fill", "white")
       .text(function(d) { return d; })
       ; 
    
