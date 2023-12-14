@@ -4,7 +4,11 @@
 
   height_rid = 0.9*width
 
-
+  var screenWidth = window.innerWidth * 0.9;
+  console.log(screenWidth)
+  var margin_r = {top: screenWidth*0.09, right: screenWidth*0.06, bottom: screenWidth*0.09, left: screenWidth*0.03},
+      width = screenWidth - margin.left - margin.right,
+      height = 600 - margin.top - margin.bottom;
 
 const svg2 = d3v6.select("#my_dataviz_line")
     .append("svg")
@@ -37,6 +41,9 @@ possiblie_years.forEach( y => {
   checkbox.checked = curYears.has(y);
   checkbox.id = `checkbox${y}`;
 
+  var label = document.createElement('label')
+  label.htmlFor = `checkbox${y}`;
+  
   checkbox.addEventListener("change", function (e) {
     if (this.checked) {
       curYears.add(this.name)
@@ -49,8 +56,7 @@ possiblie_years.forEach( y => {
 
   })
   
-  var label = document.createElement('label')
-  label.htmlFor = `checkbox${y}`;
+
   label.appendChild(checkbox);
   label.appendChild(document.createTextNode(y));
 
@@ -394,6 +400,44 @@ function plot_data_kde(allYears) {
           .y(function(d) { return y(d[1]); })
       )
 
+      var legend_r = svg2.append("g")
+      .attr("class", "legend")
+      .attr("height", 100)
+      .attr("width", 200)
+      .attr('transform', 'translate(90,20)') 
+      ;
+      //Create colour squares
+      // svg3.selectAll("mydots")
+      // .data(allYears)
+      // .enter()
+      // .append("circle")
+      //   .attr("cx", function(d,i){ return margin.left + 55*(i%2)}  )
+      //   .attr("cy", function(d,i){ return  10+ Math.floor(i/2)*20}) // 100 is where the first dot appears. 25 is the distance between dots
+      //   .attr("r", 5)
+      //   .style("fill", function(d){ return  myColor(d)})
+  
+      legend_r.selectAll('rect')
+        .data(['minimal', 'maximal'])
+        .enter()
+        .append("rect")
+        .attr("x",-60)
+        .attr("y", function(d, i){ return  10 + i * 20;})
+        .attr("width", 10)
+        .attr("height", 10)
+        .style("fill", function(d, i){ if (i == 0) return 'blue';
+                                        else return 'red';})
+        ;
+      //Create text next to squares
+      legend_r.selectAll('text')
+        .data(['minimal', 'maximal'])
+        .enter()
+        .append("text")
+        .attr("x", -47)
+        .attr("y", function(d, i){ return i * 20 + 20;})
+        .attr("font-size", "11px")
+        .attr("fill", "white")
+        .text(function(d) { return d; })
+        ; 
 })
 
 
@@ -413,9 +457,11 @@ function kernelEpanechnikov(k) {
   };
 }
 
-var margin_r = {top: 100, right: 100, bottom: 100, left: 100},
-	width = Math.min(700, window.innerWidth - 10) - margin_r.left - margin_r.right,
-	height = Math.min(width, window.innerHeight - margin_r.top - margin_r.bottom - 20);
+
+
+//var margin_r = {top: 100, right: 100, bottom: 100, left: 100},
+//	width = Math.min(700, window.innerWidth - 10) - margin_r.left - margin_r.right,
+//	height = Math.min(width, window.innerHeight - margin_r.top - margin_r.bottom - 20);
 	
 
 var color = d3v356.scale.category10();

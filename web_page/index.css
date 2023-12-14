@@ -120,7 +120,7 @@ svg > g.chart > rect.bar.unhighlight {
   color: #000;
   border: solid 1px #222;
 }
-.multipleSelection { 
+#multipleSelection { 
   width: 300px; 
   background-color: #BCC2C1; 
 } 
@@ -144,7 +144,8 @@ svg > g.chart > rect.bar.unhighlight {
 
 #checkBoxes { 
   display: none; 
-  border: 1px #8DF5E4 solid; 
+  border: 10px #8DF5E4 solid; 
+  background-color: #6e0950;
 } 
 
 #checkBoxes label { 

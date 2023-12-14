@@ -42,8 +42,6 @@ function RadarChart(id,  options, years, chosenState) {
                     return row['year'] == years[i] && row['state'] == chosenState ;
                 })[0];
 
-				console.log(Data)
-				console.log(filteredData)
                
                 data = [                    
             ];
@@ -51,7 +49,7 @@ function RadarChart(id,  options, years, chosenState) {
                 filteredData = Data.filter(function(row) {
                     return row['year'] == years[i] && row['state'] == chosenState ;
                 })[0];
-				console.log(filteredData)
+			
                 data.push([
                     {axis: "January", value:filteredData.January},
                     {axis: "February", value:filteredData.February},
@@ -69,13 +67,12 @@ function RadarChart(id,  options, years, chosenState) {
 
                 );
               }
-                console.log("freqData", data);
                 
-    var maxValue = d3v356.max(data, function(i){return d3v356.max(i.map(function(o){console.log(o);
-        return +o.value +1 ;}))});
+                
+    var maxValue = d3v356.max(data, function(i){return d3v356.max(i.map(function(o){return +o.value +1 ;}))});
 	
     var minValue =  d3v356.min(data, function(i){return d3v356.min(i.map(function(o){return +o.value -1;}))});
-	console.log(Data)
+
 	           
 	var allAxis = (data[0].map(function(i, j){return i.axis})),	//Names of each axis
 		total = allAxis.length,					//The number of different axes
@@ -144,7 +141,7 @@ function RadarChart(id,  options, years, chosenState) {
 	   .attr("dy", "0.4em")
 	   .style("font-size", "10px")
 	   .attr("fill", "white")
-	   .text(function(d,i) { console.log(d) ; return Math.round((maxValue - minValue)* d/cfg.levels + minValue); });
+	   .text(function(d,i) {  return Math.round((maxValue - minValue)* d/cfg.levels + minValue); });
 
 	/////////////////////////////////////////////////////////
 	//////////////////// Draw the axes //////////////////////
@@ -197,13 +194,13 @@ function RadarChart(id,  options, years, chosenState) {
 		.data(data)
 		.enter().append("g")
 		.attr("class", "radarWrapper");
-	console.log(data)	
+	
 	//Append the backgrounds	
 	blobWrapper
 		.append("path")
 		.attr("class", "radarArea")
 		.attr("d", function(d,i) {
-            console.log(d);
+          
            // console.log(i);
              return radarLine(d); })
 		.style("fill", function(d,i) { return cfg.color(i); })
@@ -323,7 +320,7 @@ function RadarChart(id,  options, years, chosenState) {
 var text = svg.append("text")
     .attr("class", "title")
     .attr('transform', 'translate(90,0)') 
-    .attr("x", 10)
+    .attr("x", -60)
     .attr("y", 10)
     .attr("font-size", "12px")
     .attr("fill", "white")
@@ -341,7 +338,7 @@ var legend = svg.append("g")
       .data(years)
       .enter()
       .append("rect")
-      .attr("x",10)
+      .attr("x",-60)
       .attr("y", function(d, i){ return i * 20;})
       .attr("width", 10)
       .attr("height", 10)
@@ -352,7 +349,7 @@ var legend = svg.append("g")
       .data(years)
       .enter()
       .append("text")
-      .attr("x", 23)
+      .attr("x", -47)
       .attr("y", function(d, i){ return i * 20 + 9;})
       .attr("font-size", "11px")
       .attr("fill", "white")

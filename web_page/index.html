@@ -165,7 +165,9 @@
 
 							<article id="timelines">
 								<h2 class="major">Timelines and distributions</h2>
-								<p id="">
+
+								<!-- <p id=""> -->
+								<p>In this section, we will present temperature data for various U.S. states across selected years. Each plot will showcase information pertaining to the preferred years and the initially chosen state.</p>
                                     <form> 
 									<div class="multipleSelection"> 
 										<div class="selectBox" 
@@ -198,16 +200,25 @@
 						</script> 
 
 						<select id="selectButton"></select>
-
+						<br>
+						<h2>Lineplot</h2>
+						<p>
+							This plot illustrates the minimum (lighter line), maximum (darker line) and average (dots) temperatures throughout the selected years.</p>
 						<div id="my_dataviz2"></div>
-						<p>Same as above, but in percent scale:</p>
+						<h2>RadarChart</h2>
+						<p> 
+							This plot visualizes average temperature fluctuations using a circular grid.</p>
+						<div class="radarChart"></div>
+						<h2>Ridgeline</h2>
+						<p>
+							This graphical representation depicts Kernel Density Estimates (KDE) for minimum temperatures (blue line) and maximum temperatures (red line) across all months within the chosen years.</p>
 
 						<div id="my_dataviz_line"></div>
+						
 
 						<script src="../timelines/radarchart.js"></script>	
 						<script src="../timelines/line_plot.js"></script>
-						<p> Smth</p>
-						<div class="radarChart"></div>
+						
 
 						
 						</article>
