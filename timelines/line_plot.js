@@ -1,22 +1,22 @@
 // set the dimensions and margins of the graph
 //const margin = {top: 100, right: 30, bottom: 40, left: 60},
   //  width = 660 - margin.left - margin.right,
-    //height = 500 - margin.top - margin.bottom;
 
+  height_rid = 0.9*width
 
 
 
 const svg2 = d3v6.select("#my_dataviz_line")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom + 40)
+      .attr("height", height_rid + margin.top + margin.bottom + 40)
     .append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 const svg3 = d3v6.select("#my_dataviz2")
       .append("svg")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom + 20)
+        .attr("height", height + margin.top + margin.bottom + 40)
       .append("g")
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -292,19 +292,19 @@ function plot_data_kde(allYears) {
     .range([ 0, width ]);
   svg2.append("g")
     .attr("class", "xAxis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3v6.axisBottom(x).tickValues([-30,-20,-10,0,10,20,30,40,50]).tickSize(-height) )
+    .attr("transform", "translate(0," + height_rid + ")")
+    .call(d3v6.axisBottom(x).tickValues([-30,-20,-10,0,10,20,30,40,50]).tickSize(-height_rid) )
     .select(".domain").remove()
 
   // Create a Y scale for densities
   const y = d3v6.scaleLinear()
-    .domain([0, 0.3])
-    .range([ height, 0]);
+    .domain([0, 0.5])
+    .range([ height_rid, 0]);
 
   // Create the Y axis for names
   const yName = d3v6.scaleBand()
     .domain(categories)
-    .range([0, height])
+    .range([0.15*height_rid, height_rid])
     .paddingInner(1)
   svg2.append("g")
     .call(d3v6.axisLeft(yName).tickSize(0))
@@ -342,7 +342,7 @@ function plot_data_kde(allYears) {
   svg2.selectAll("areas")
     .data(allDensity_min)
     .join("path")
-      .attr("transform", function(d){return(`translate(0, ${(yName(d.key)-height)})` )})
+      .attr("transform", function(d){return(`translate(0, ${(yName(d.key)-height_rid)})` )})
       .attr("stroke", function(d){
         grp = d.key ;
         index = categories.indexOf(grp)
@@ -368,7 +368,7 @@ function plot_data_kde(allYears) {
   svg2.selectAll("areas")
     .data(allDensity_max)
     .join("path")
-      .attr("transform", function(d){return(`translate(0, ${(yName(d.key)-height)})` )})
+      .attr("transform", function(d){return(`translate(0, ${(yName(d.key)-height_rid)})` )})
       .attr("stroke", function(d){
         grp = d.key ;
         index = categories.indexOf(grp)
