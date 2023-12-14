@@ -45,6 +45,8 @@ possiblie_years.forEach( y => {
     }
     plot_data_years(curYears)
     plot_data_kde(curYears)
+    RadarChart(".radarChart",  radarChartOptions, curYears, curState);
+
   })
   
   var label = document.createElement('label')
@@ -233,6 +235,7 @@ d3v6.csv("../timelines/data/all_in_one_temperatire.csv").then(function (data) {
         // run the updateChart function with this selected option
         update(selectedOption)
         plot_data_kde(allYears)
+        RadarChart(".radarChart",  radarChartOptions, curYears, selectedOption);
     })
 
 
@@ -410,5 +413,23 @@ function kernelEpanechnikov(k) {
   };
 }
 
+var margin_r = {top: 100, right: 100, bottom: 100, left: 100},
+	width = Math.min(700, window.innerWidth - 10) - margin_r.left - margin_r.right,
+	height = Math.min(width, window.innerHeight - margin_r.top - margin_r.bottom - 20);
+	
+
+var color = d3v356.scale.category10();
+				
+var radarChartOptions = {
+	w: width,
+	h: height,
+	margin: margin_r,
+	maxValue: 0.5,
+	levels: 5,
+	roundStrokes: true,
+	color: color
+};
+
 plot_data_years(curYears)
 plot_data_kde(curYears)
+RadarChart(".radarChart",  radarChartOptions, curYears, curState);

@@ -4,8 +4,10 @@
 ////////////////// VisualCinnamon.com ///////////////////
 /////////// Inspired by the code of alangrafu ///////////
 /////////////////////////////////////////////////////////
-	
-function RadarChart(id,  options, years) {
+
+
+
+function RadarChart(id,  options, years, chosenState) {
 	var cfg = {
 	 w: 600,				//Width of the circle
 	 h: 600,				//Height of the circle
@@ -33,17 +35,23 @@ function RadarChart(id,  options, years) {
 	//var maxValue = Math.max(cfg.maxValue, d3v356.max(data, function(i){return d3v356.max(i.map(function(o){return o.value;}))}));
 	// years = ['2022', '2017', '2012', '2007'];
     var data;
-            d3v356.csv("../timelines/data/average_temperature.csv", function(Data) {
+	years = Array.from(years).sort()
+	d3v356.csv("../timelines/data/average_temperature.csv", function(Data) {
+
                 filteredData = Data.filter(function(row) {
-                    return row['year'] == years[0] && row['state'] == 'Idaho' ;
+                    return row['year'] == years[i] && row['state'] == chosenState ;
                 })[0];
+
+				console.log(Data)
+				console.log(filteredData)
                
                 data = [                    
             ];
             for (let i = 0; i < years.length; i++) {
                 filteredData = Data.filter(function(row) {
-                    return row['year'] == years[i] && row['state'] == 'Idaho' ;
+                    return row['year'] == years[i] && row['state'] == chosenState ;
                 })[0];
+				console.log(filteredData)
                 data.push([
                     {axis: "January", value:filteredData.January},
                     {axis: "February", value:filteredData.February},
@@ -67,7 +75,7 @@ function RadarChart(id,  options, years) {
         return +o.value +1 ;}))});
 	
     var minValue =  d3v356.min(data, function(i){return d3v356.min(i.map(function(o){return +o.value -1;}))});
-	console.log(minValue)
+	console.log(Data)
 	           
 	var allAxis = (data[0].map(function(i, j){return i.axis})),	//Names of each axis
 		total = allAxis.length,					//The number of different axes
@@ -166,7 +174,7 @@ function RadarChart(id,  options, years) {
 		.attr("dy", "0.35em")
 		.attr("x", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.cos(angleSlice*i - Math.PI/2); })
 		.attr("y", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.sin(angleSlice*i - Math.PI/2); })
-		.attr("fill", "white")
+.attr("fill", "white")
 		.text(function(d){return d})
 		.call(wrap, cfg.wrapWidth);
 
@@ -202,9 +210,9 @@ function RadarChart(id,  options, years) {
 		.style("fill-opacity", cfg.opacityArea)
 		.on('mouseover', function (d,i){
 			//Dim all blobs
-			d3v356.selectAll(".radarArea")
-				.transition().duration(200)
-				.style("fill-opacity", 0.1); 
+			// d3.selectAll(".radarArea")
+			// 	.transition().duration(100)
+			// 	.style("fill-opacity", 0.1); 
 			//Bring back the hovered over blob
 			d3v356.select(this)
 				.transition().duration(200)
@@ -264,7 +272,6 @@ function RadarChart(id,  options, years) {
 			tooltip
 				.attr('x', newX)
 				.attr('y', newY)
-				.text(Format(d.value))
 				.transition().duration(200)
 				.style('opacity', 1);
 		})
@@ -355,3 +362,8 @@ var legend = svg.append("g")
             });
 	
 }//RadarChart
+
+
+
+//curYears = ['2022', '2017', '2012', '2007', '2002'];
+
