@@ -10,8 +10,8 @@ const myColors = ["gold", "CornflowerBlue", "LightGoldenRodYellow", "yellow",
 
 function dot_plot(is_multiple, canvas_name){
 let base_radius = 2
-const width = 0.9*screen.width;
-const height = 0.6*width;
+var width = window.innerWidth * 0.9;
+ height = 0.6*width;
 
 
 
@@ -32,7 +32,7 @@ d3.json("../map/usaRegs.json").then(function (world) {
     // Draw legend inside the canvas
     const legendWidth = 120;
     const legendHeight = myColors.length * 20;
-    const legendX = width - legendWidth - 10;
+    const legendX = margin.left  ;
     const legendY = 10;
 
     context.save();
@@ -50,7 +50,7 @@ d3.json("../map/usaRegs.json").then(function (world) {
         const labelX = dotX + 10;
         const labelY = dotY + 4;
 
-        context.font = "15px Roboto";
+        context.font = "13px Roboto";
         context.fillStyle = "white";
         context.fillText(allYears[i], labelX, labelY);
         
