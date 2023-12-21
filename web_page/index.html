@@ -44,6 +44,7 @@
 	<script src="https://d3js.org/d3.v5.js"></script>
 	<script src="https://d3js.org/d3-array.v2.min.js"></script> 
 	<script src="https://d3js.org/topojson.v3.min.js"></script>
+	<script src="http://d3js.org/queue.v1.min.js"></script>
 	
 
 
@@ -235,7 +236,14 @@
 						</article>
 
 						<article id="map">
-							<h2 class="major">Colorpleth Map</h2>
+							<h2>Dot Map</h2>
+							<script src="../map/script.js"></script>
+							<p>Dot map</p>
+    						<canvas id="map_dot" ></canvas>
+							<p>Dot map 2</p>
+							<canvas id="map_dot_multiple" ></canvas>
+							<div id="legend_dot_map" class="legend"></div>
+							<h2 >Colorpleth Map</h2>
 							<p>We opted not to delve into smaller city-level data to avoid privileging unknown or incomplete information </p>
 							<div id="chart_map"></div>
 							<script type="module" src="../map/colormap.js"></script>

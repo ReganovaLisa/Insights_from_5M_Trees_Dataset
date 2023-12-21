@@ -1,23 +1,66 @@
-const width = 800;
-const height = 600;
-
+//const width = 800;
+//const height = 600;
+//const width = screen.width;
+//const height = 0.6*width;
 // param to change points dencity 
-let base_radius = 1
+
+const myColors = ["gold", "CornflowerBlue", "LightGoldenRodYellow", "yellow",
+"CadetBlue", "orange", "darkgreen", "Coral",
+"brown", "slateblue", "DarkSlateGrey"]
+
+function dot_plot(is_multiple, canvas_name){
+let base_radius = 2
+const width = 0.9*screen.width;
+const height = 0.6*width;
+
+
 
 // Load GeoJSON data and display the map
-d3.csv("data/usa_top10.csv").then(function (data) {
-d3.json("usaRegs.json").then(function (world) {
+d3.csv("../map/data/usa_top10.csv").then(function (data) {
+d3.json("../map/usaRegs.json").then(function (world) {
 
-    const canvas = d3.select("#map")
+    const canvas = d3.select(canvas_name)
         .attr("width", width)
         .attr("height", height);
 
+    
         
     const context = canvas.node().getContext("2d");
 
+    var allYears = Object.keys(data[0]).slice(1)
+    if (is_multiple){
+    // Draw legend inside the canvas
+    const legendWidth = 120;
+    const legendHeight = myColors.length * 20;
+    const legendX = width - legendWidth - 10;
+    const legendY = 10;
+
+    context.save();
+    context.fillStyle = "rgba(0, 0, 0, 0.002)";
+    context.fillRect(legendX, legendY, legendWidth, legendHeight);
+
+    myColors.forEach((color, i) => {
+        const dotX = legendX + 10;
+        const dotY = legendY + 10 + i * 20;
+
+        context.beginPath();
+        context.fillStyle = color;
+        context.fillRect(dotX, dotY, 5, 5);
+
+        const labelX = dotX + 10;
+        const labelY = dotY + 4;
+
+        context.font = "15px Roboto";
+        context.fillStyle = "white";
+        context.fillText(allYears[i], labelX, labelY);
+        
+    })};
+    
+    context.restore();
+
     
     const projection = d3.geoAlbersUsa()
-     .scale(1000)
+     .scale(width)
      .translate([width / 2, height / 2]);
 
     const path = d3.geoPath().projection(projection).context(context);
@@ -30,7 +73,7 @@ d3.json("usaRegs.json").then(function (world) {
         context.beginPath();
         path(feature);
         context.lineWidth = 0.7;
-        context.strokeStyle = "#000";
+        context.strokeStyle = "white";
         context.stroke();
         }
     });
@@ -41,9 +84,6 @@ d3.json("usaRegs.json").then(function (world) {
             feature.properties.bounds = path_.bounds(feature);
         });
 
-    var myColors = ["gold", "blue", "green", "yellow",
-                   "black", "orange", "darkgreen", "pink",
-                   "brown", "slateblue", "grey"]
     
     let max_trees = d3.max(data, d => d3.sum(Object.values(d).slice(1).map( el => +el)))
     let max_state_area = d3.max(world.features, d => d.properties.area)
@@ -63,7 +103,7 @@ d3.json("usaRegs.json").then(function (world) {
 
         if (state.length > 0) {
             state = state[0]
-            console.log(state)
+            //console.log(state)
 
 
             
@@ -81,14 +121,14 @@ d3.json("usaRegs.json").then(function (world) {
             let box_dencity = real_dencity
             //console.log(box_dencity)
             let radius = base_radius / Math.sqrt(box_dencity)
-            console.log(radius)
+           // console.log(radius)
             let points = createPoints(w, h, radius)
             points.forEach(d => {
                 d[0] += x; 
                 d[1] += y
             })
 
-            console.log(Object.values(state).slice(1).map( el => +el))
+           // console.log(Object.values(state).slice(1).map( el => +el))
 
             points.forEach(function (d) {
 
@@ -96,10 +136,10 @@ d3.json("usaRegs.json").then(function (world) {
                 
 
                 // change for fool green 
-                if(true) {
+                if(is_multiple) {
                     context.fillStyle = myColors[getRandomMultinomial(Object.values(state).slice(1).map( el => +el))]
                 } else {
-                    context.fillStyle = "green";
+                    context.fillStyle = "white";
                 }
 
                 context.fillRect(d[0], d[1], 2, 2);
@@ -122,6 +162,7 @@ d3.json("usaRegs.json").then(function (world) {
             }
         }
     }
+
 
 })
 });
@@ -206,3 +247,8 @@ function poissonDiscSampler(width, height, radius) {
         return s;
     }
 }
+};
+
+
+dot_plot(is_multiple = false, canvas_name = "#map_dot");
+dot_plot(is_multiple = true, canvas_name = "#map_dot_multiple");

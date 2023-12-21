@@ -10,14 +10,14 @@ function Choropleth(data, {
     scale = d3v7.scaleSequential, // type of color scale
     domain, // [min, max] values; input of color scale
     range = d3v7.interpolateGreens, // output of color scale
-    width = 640, // outer width, in pixels
+    width = screen.width, // outer width, in pixels
     height, // outer height, in pixels
     projection, // a d3v7 projection; null for pre-projected geometry
     features, // a GeoJSON feature collection
     featureId = d => d.id, // given a feature, returns its id
     borders, // a GeoJSON object for stroking borders
     outline = projection && projection.rotate ? {type: "Sphere"} : null, // a GeoJSON object for the background
-    unknown = "grey", // fill color for missing data
+    unknown = "#343634", // fill color for missing data
     fill = "white", // fill color for outline
     stroke = "white", // stroke color for borders
     strokeLinecap = "round", // stroke line cap for borders

@@ -145,7 +145,7 @@ svg > g.chart > rect.bar.unhighlight {
 #checkBoxes { 
   display: none; 
   border: 10px #8DF5E4 solid; 
-  background-color: #6e0950;
+  background-color: #343634;
 } 
 
 #checkBoxes label { 
